@@ -1,0 +1,32 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/**
+!.vscode/extensions.json
+.idea
+.dccache
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Code style tools left out so we can hopefully see how diligent the candidate
+# is on code style
+.editorconfig
+.prettierrc.json
+
+# Candidate, did you read the .gitignore? If so, leave a comment below!
