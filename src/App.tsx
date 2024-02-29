@@ -7,13 +7,13 @@ import { UserList } from "./components/UserList";
 import { useUsers } from "./hooks/useUsers";
 
 const App = () => {
-  const { data, isLoading } = useUsers();
+  const { data, isLoading, updateUser } = useUsers(); 
 
   return (
     <div className={`App ${Classes.DARK}`}>
       <h1>UI Screening 01</h1>
       <Card>
-        <UserList isLoading={isLoading} users={data} />
+      <UserList isLoading={isLoading} users={data} onEditUser={updateUser} />
       </Card>
     </div>
   );

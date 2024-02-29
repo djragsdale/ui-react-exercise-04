@@ -2,6 +2,26 @@ import { act, renderHook } from "@testing-library/react";
 
 import { TIME_DELAY, useUsers } from "./useUsers";
 
+const testUsers = [
+  {
+    idUser: 1001,
+    profile: {
+      firstName: "ABC",
+      lastName: "DEF",
+    },
+    role: "Role1",
+  },
+  {
+    idUser: 1002,
+    profile: {
+      firstName: "GHI",
+      lastName: "JKL",
+    },
+    role: "Role2",
+  },
+];
+
+
 describe("useUsers", () => {
   beforeAll(() => {
     jest.useFakeTimers();
@@ -26,6 +46,21 @@ describe("useUsers", () => {
   });
 
   it("updates only the relevant user called by updateUser", () => {
-    expect(null).toStrictEqual([{ idUser: 0 }]);
+    const {result} = renderHook(()=>useUsers());
+
+    if(result.current.data){
+
+    const previousValues = result.current.data;
+    const userToBeEdited = result.current.data[0]
+
+    result.current.updateUser(userToBeEdited.idUser, testUsers[0])
+
+    expect(result.current.data[0]).toStrictEqual(testUsers[0]);
+
+    result.current.data.slice(0).forEach((value, index)=>{
+      expect(value).toStrictEqual(previousValues[index]);
+    })
+  }
+
   });
 });
